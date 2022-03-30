@@ -1,0 +1,57 @@
+.container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+h1{
+    font-size: 30px;
+    margin-bottom: 7px;
+}
+
+.tabla-usuarios{
+    text-align: center;
+    width: 100%;
+}
+
+thead{
+    background-color: rgb(165, 243, 168);
+}
+
+thead th, td{
+    width: 100px;
+    box-shadow: 0 0 1px 0 grey;
+}
+
+tbody tr:nth-child(odd){
+    background-color: rgb(165, 243, 168);
+    width: 70px;
+}
+
+tbody tr:nth-child(even){
+    background-color: rgb(165, 243, 168);
+}
+
+.buttons{
+    margin-top: 30px;
+    display:flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.buttons a{
+    padding: 7px 22px;
+    border-radius: 39px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.agregar{
+    background-color: blue;
+}
+.eliminar{
+    background-color: red;
+}
+.editar{
+    background-color: skyblue;
+}

@@ -1,0 +1,13 @@
+.container-admin{
+    display: flex;
+}
+
+.menu-admin{
+    width: 25%;
+    margin: 20px;
+}
+
+.body-admin{
+    width: 75%;
+    margin: 20px;
+}

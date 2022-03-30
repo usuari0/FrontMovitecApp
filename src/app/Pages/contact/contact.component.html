@@ -1,0 +1,105 @@
+<main>
+  <section class="form-container">
+    <h1>Contacta con nuestro equipo para tus dudas o necesidades</h1>
+    <div class="form">
+      <form action="" (submit)="onSubmit()" #formContact="ngForm">
+        <input name="nombre" #nombre="ngModel"
+               class="form-item"
+               type="text"
+               placeholder="Nombre"
+               [(ngModel)]="contacto.nombre"
+               pattern="^[a-zA-Z]{3,30}(\s[a-zA-Z]{3,30}){0,2}$">
+               <p *ngIf="nombre.invalid">Sin tildes, ni "ñ - Ñ", por favor.</p>
+<!--\u00f1\u00d1  estos son para ñ y Ñ-->
+        <input name="apellidos" #apellidos="ngModel"
+               class="form-item"
+               type="text"
+               placeholder="Apellido"
+               [(ngModel)]="contacto.apellidos"
+               pattern="^[a-zA-Z]{2,30}(\s[a-zA-Z]{2,22}){0,3}$">
+               <p *ngIf="apellidos.invalid">Sin tildes, ni "ñ - Ñ", por favor.</p>
+
+        <select name="tipoDoc"
+                class="form-item"
+                [(ngModel)]="contacto.documento">
+          <option value="DNI">DNI</option>
+          <option value="Carnet de Extranjería">Carnet de Extranjería</option>
+        </select>
+
+        <input name="numDoc" #numDoc="ngModel"
+               class="form-item"
+               type="text"
+               placeholder="N&uacute;mero de documento"
+               [(ngModel)]="contacto.numero_documento"
+               pattern="^([0-9]{8}|[0-9]{12})$">
+               <p *ngIf="numDoc.invalid">Uy, debe tener 8 o 12 N&Uacute;MEROS.</p>
+
+        <input name="correo" #correo="ngModel"
+               class="form-item"
+               type="email"
+               placeholder="Correo"
+               [(ngModel)]="contacto.correo"
+               pattern="^[a-zA-Z0-9_\.-]{3,40}@[a-z]{2,20}\.[a-z]{2,10}(\.[a-z]{2,10}){0,2}$">
+               <p *ngIf="correo.invalid">No cumple el formato de correo correcto.</p>
+
+        <input name="phone" #phone="ngModel"
+               class="form-item"
+               type="text"
+               placeholder="Tel&eacute;fono o celular"
+               [(ngModel)]="contacto.telefono"
+               pattern="^[0-9]{9,15}$">
+               <p *ngIf="phone.invalid">Ups, debe tener de 9 a 15 N&Uacute;MEROS.</p>
+
+        <textarea name="mensaje" #mensaje="ngModel"
+                  rows="5"
+                  placeholder="Escriba su mensaje aqu&iacute;"
+                  [(ngModel)]="contacto.mensaje"
+                  required
+                  maxlength="500"></textarea>
+                  <p *ngIf="mensaje.invalid">Es obligatorio el mensaje.</p>
+
+        <label for="check"><input name="flagDataPersonal"
+                                  type="checkbox"
+                                  id="check"
+                                  [(ngModel)]="flagDataPersonal">He leído y aceptado las <a href="#">Condiciones del Tratamiento de Datos Personales</a></label>
+
+        <button type="submit"
+                [disabled]="formContact.invalid || !flagDataPersonal"
+                [ngStyle]="formContact.invalid || !flagDataPersonal ? {'background':'#45a8ee', 'cursor':'default', 'color':'#555'}:{}">ENVIAR</button>
+      </form>
+    </div>
+    <div class="respuesta-contacto" [ngClass]="{'respuesta-check':flagCheck&&flagRespuesta,'respuesta-exis':!flagCheck&&flagRespuesta}">
+      <p *ngIf="flagCheck; else error">
+        <i class="fa-solid fa-check"></i> Informaci&oacute;n enviada satisfactoriamente.
+      </p>
+      <ng-template #error>
+        <p>
+          <i class="fa-solid fa-xmark"></i> Ocurri&oacute; un error, int&eacute;ntelo m&aacute;s tarde.
+        </p>
+      </ng-template>
+    </div>
+  </section>
+
+
+  <section class="info-container">
+    <article class="info1">
+      <h1>ATENCI&Oacute;N AL CLIENTE</h1>
+      <P><i class="fa-solid fa-phone"></i>Central:
+        (+51) 99 999 9999</P>
+      <P><i class="fa-solid fa-envelope"></i>Escríbenos:
+        contacto@movitec.pe </P>
+    </article>
+    <article class="info2">
+      <h1>INFORMACI&Oacute;N COMERCIAL</h1>
+      <P><i class="fa-solid fa-phone"></i>Ventas:
+        (511) 999 9999</P>
+      <P><i class="fa-solid fa-envelope"></i>Escríbenos:
+        contacto@movitec.pe</P>
+    </article>
+    <article class="info3">
+      <h1>NUESTRA OFICINA</h1>
+      <P><i class="fa-solid fa-building"></i>SAN ISIDRO
+        Av. San Martin de Porres</P>
+    </article>
+  </section>
+</main>

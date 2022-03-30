@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Empleados</h1>
+    <table class="tabla-usuarios">
+        <thead>
+            <th>SELECCIONAR</th>
+            <th>NOMBRE Y APELLIDOS</th>
+            <th>DIRECCI&Oacute;N</th>
+            <th>TEL&Eacute;FONO</th>
+            <th>CORREO</th>
+            <th>C&Oacute;DIGO</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of empleados">
+                <td>-</td>
+                <td>{{item.nombre+" "+item.apellidos}}</td>
+                <td>{{item.direccion}}</td>
+                <td>{{item.telefono}}</td>
+                <td>{{item.correo}}</td>
+                <td>{{item.codigo}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="buttons">
+        <a class="agregar" href="">AGREGAR</a>
+        <a class="eliminar" href="">ELIMINAR</a>
+        <a class="editar" href="">EDITAR</a>
+    </div>
+</div>

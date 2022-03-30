@@ -1,0 +1,13 @@
+<header>
+  <img src="../../../assets/img/logoMovitec.png" alt="logo">
+  <nav>
+    <input type="checkbox" class="check" id="menu">
+    <label for="menu"><i class="fa-solid fa-bars"></i></label>
+    <ul class="nav">
+      <li class="nav-item" *ngIf="!isLogin"><a routerLink="public/home"><i class="fa fa-solid fa-house"></i><p>HOME</p></a></li>
+      <li class="nav-item" *ngIf="!isLogin"><a routerLink="public/contact">CONTACTO</a></li>
+      <li class="nav-item" *ngIf="!isLogin"><a routerLink="public/login">INICIAR SESI&Oacute;N</a></li>
+      <li class="nav-item cerrar" *ngIf="isLogin"><a routerLink="public/login" (click)="cerrarSesion()">CERRAR SESI&Oacute;N</a></li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,18 @@
+footer{
+  background-color: rgb(68, 66, 66);
+  color: #ffe;
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem 0;
+} footer section >:first-child{
+  font-size: 30px;
+}
+
+@media screen and (max-width: 700px){
+  footer{
+    flex-wrap: wrap;
+  } footer section{
+    flex-basis: 100%;
+    text-align: center;
+  }
+}

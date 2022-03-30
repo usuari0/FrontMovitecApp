@@ -1,0 +1,165 @@
+main{
+  padding-bottom: 30px;
+}
+/* _carrusel de imágenes */
+.main-carrusel-content ul{
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+} .main-carrusel-content img, .main-carrusel-content li{
+  width: 100%;
+  flex: none;
+} .main-carrusel-content .li-car1{
+  position: relative;
+  animation: sld1 24s ease 10s infinite;
+} .main-carrusel-content .li-car2{
+  position: relative;
+  animation: sld2 24s ease 10s infinite;
+} @Keyframes sld1{
+  from{right: 0;}
+  8%{right: 100%;}
+  50%{right: -100%;}
+  58%{right: 0;}
+  to{right: 0;}
+} @Keyframes sld2{
+  0%{right: 0;}
+  8%{right: 100%;}
+  50%{right: 100%;}
+  58%{right: 200%;}
+  100%{right: 200%;}
+}
+
+/* _planes */
+.planes-title{
+  text-align: center;
+  margin: 3rem 0;
+  font-size: 62px;
+}
+.main-planes-content{
+  display: flex;
+  justify-content: center;
+} .plan{
+  border-radius: 10px;
+  background-color: #a8e6e2;
+  margin: 1.2rem;
+  padding: 2rem;
+  box-shadow: inset 0 0 11px -3px black;
+} .plan:first-child{
+  box-shadow: inset 0 0 10px -2px rgb(223, 255, 227);
+  background-color: rgb(0, 73, 0);
+  color: #eff;
+} .plan >:first-child, .plan >:nth-child(2) {
+  text-align: center;
+} .plan >:first-child {
+  font-size: 31px;
+  font-weight: bold;
+} .plan >:nth-child(2){
+  font-size: 50px;
+  font-weight: bold;
+} .plan div{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-top: 40px;
+} .plan div > img{
+  background-color: #000;
+  border-radius: 5px;
+  padding: 5px;
+} .plan:first-child div > img{
+  background-color: #fff;
+} .plan div:last-child{
+  display: flex;
+  justify-content: center;
+} .plan button{
+  font-size: 20px;
+  border-radius: 7px;
+  border-bottom-left-radius: 0;
+  border: none;
+  border-right: solid black 2px;
+  border-bottom: solid black 2px;
+  padding: 6px 10px;
+  font-weight: bold;
+  width: 150px;
+  background-color: orange;
+} .plan:first-child button{
+  border-right: solid white 2px;
+  border-bottom: solid white 2px;
+  background-color: rgb(73, 163, 96);
+  color: white;
+} .plan button:hover{
+  cursor: pointer;
+  background-color: rgb(255, 186, 57);
+} .plan:first-child button:hover{
+  background-color: rgb(55, 146, 77);
+} .plan img{
+  width: 30px;
+  margin-right: 17px;
+}
+
+/* _planes beneficios*/
+.beneficios-title{
+  text-align: center;
+  margin: 3rem 0;
+  font-size: 62px;
+}
+.main-beneficios-content{
+  display: flex;
+  justify-content: center;
+} .ben{
+  margin: 37px;
+  flex-basis: 173px;
+  background-color: #dff;
+  border-radius: 10px;
+  border: solid 1px grey;
+  padding: 2rem;
+  box-shadow: 7px -7px 10px -7px #1f2c2e;
+} .ben > *{
+  text-align: center;
+  margin: 1rem 0;
+} .ben img{
+  width: 100px;
+} .ben>:nth-child(2){
+  font-size: 25px;
+  font-weight: bold;
+} .ben>:last-child{
+  font-size: 20px;
+}
+
+/* _distritos */
+.main-distrito{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: rgba(107, 107, 134, 0.5);
+  padding: 5rem 0;
+  border-radius: 7px;
+  box-shadow: inset 7px -7px 7px -7px black;
+} .main-distrito p{
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  flex-basis: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 800px){
+  .main-planes-content{
+    flex-wrap: wrap;
+  } .plan{
+    flex-basis: 350px;
+  }
+  .main-beneficios-content{
+    flex-wrap: wrap;
+  } .ben{
+    flex-basis: 290px;
+    margin: 10px;
+  }
+  .main-distrito{
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: initial;
+  }
+}

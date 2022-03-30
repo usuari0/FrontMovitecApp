@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Empleados</h1>
+    <table class="tabla-usuarios">
+        <thead>
+            <th>SELECCIONAR</th>
+            <th>MARCA</th>
+            <th>MODELO</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of equipos">
+                <td>-</td>
+                <td>{{item.marca}}</td>
+                <td>{{item.modelo}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="buttons">
+        <a class="agregar" href="">AGREGAR</a>
+        <a class="eliminar" href="">ELIMINAR</a>
+        <a class="editar" href="">EDITAR</a>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Planes</h1>
+    <table class="tabla-usuarios">
+        <thead>
+            <th>SELECCIONAR</th>
+            <th>VELOCIDAD</th>
+            <th>PRECIO</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of planes">
+                <td>-</td>
+                <td>{{item.velocidad}} Mbps</td>
+                <td>S/ {{item.precio}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="buttons">
+        <a class="agregar" href="">AGREGAR</a>
+        <a class="eliminar" href="">ELIMINAR</a>
+        <a class="editar" href="">EDITAR</a>
+    </div>
+</div>
