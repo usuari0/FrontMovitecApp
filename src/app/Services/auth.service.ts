@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UsuarioLogin, UsuarioLoginReturn, UsuarioNuevo } from '../Models/usuario.model';
+import { Contraseñas, UsuarioLogin, UsuarioLoginReturn, UsuarioNuevo } from '../Models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +19,13 @@ export class AuthService {
 
   login(usuario : UsuarioLogin){
     return this.http.post<UsuarioLoginReturn>(this.baseUrl+"login", usuario);
+  }
+
+  editar(usuario : UsuarioNuevo){
+    return this.http.put<void>(this.baseUrl+"editar/"+usuario.id,usuario);
+  }
+
+  cambiaContra(contras:Contraseñas){
+    return this.http.put<void>(this.baseUrl+"cambiar",contras);
   }
 }

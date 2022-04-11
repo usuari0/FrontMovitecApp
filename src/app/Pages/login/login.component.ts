@@ -4,6 +4,7 @@ import { UsuarioLogin } from 'src/app/Models/usuario.model';
 import { AuthService } from 'src/app/Services/auth.service';
 import { StoreService } from 'src/app/Services/store.service';
 import { TokenService } from 'src/app/Services/token.service';
+import { UsuarioService } from 'src/app/Services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     private router : Router,
     private authService : AuthService,
     private tokenService : TokenService,
-    private storeService : StoreService
+    private storeService : StoreService,
+    private usuarioService : UsuarioService
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +47,7 @@ export class LoginComponent implements OnInit {
       this.tokenService.setUsername(data.nombreUsuario);
       this.tokenService.setAuthorities(data.authorities);
       this.roles = this.tokenService.getAuthorities();
+      this.usuarioService.setUsuario(data);
       if (this.roles.indexOf("ROLE_ADMIN")!==-1){
         this.router.navigate(["../../admin"]);
       }else if (this.roles.indexOf("ROLE_USER")!==-1){

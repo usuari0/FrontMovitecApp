@@ -1,0 +1,48 @@
+.menu-lista-item{
+    list-style: none;
+    height: 1000px;
+}
+
+.usuario{
+    color: white;   
+    font-style: bold;
+    text-align: center;
+    background-image: url("../../../assets/img/paisaje.jpg");
+}
+
+.menu-item-subtitle{
+    text-decoration: none;
+    display: block;
+    color: #b0bec5;
+    padding: 10px 20px;
+    line-height: 10px;
+    font-weight: 500;
+}
+
+.menu-item a{
+    text-decoration: none;
+    display: block;
+    color: #b0bec5;
+    padding: 10px;  
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.menu-item a:hover{
+    color: white;
+}
+
+.img-usuario{
+    width: 100%;
+    height: 100px;
+}
+
+.usuario img{
+    width: 90px;
+    margin-top: 10px;
+}
+
+.inicio:active{
+    position: relative;
+    background-color: #2196F3;
+}

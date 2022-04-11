@@ -1,30 +1,115 @@
 <div class="container">
-    <h1>Usuarios</h1>
+    <h1>Clientes</h1>
+    <div class="buttons">
+        <a class="agregar" (click)="nuevoModal()">AGREGAR</a>
+        <a (click)="enviarCorreo()" class="notificar">ENVIAR CORREO</a>
+    </div>
     <table class="tabla-usuarios">
         <thead>
-            <th>SELECCIONAR</th>
             <th>NOMBRE Y APELLIDO</th>
             <th>USERNAME</th>
             <th>CORREO</th>
             <th>ESTADO</th>
             <th>TIPO DOCUMENTO</th>
             <th>N&Uacute;MERO DOCUMENTO</th>
+            <th>OPERACION</th>
         </thead>
         <tbody>
-            <tr *ngFor="let item of usuarios">
-                <td>-</td>
+            <tr *ngFor="let item of usuarios; index as i">
                 <td>{{item.nombre+" "+item.apellidos}}</td>
                 <td>{{item.nombre_Usuario}}</td>
                 <td>{{item.correo}}</td>
-                <td>{{item.estado}}</td>
+                <td>{{item.estado?"Activo":"Inactivo"}}</td>
                 <td>{{item.tipo}}</td>
                 <td>{{item.documento}}</td>
+                <td class="operation-item"><i (click)="editarModal(i)" class="fa-solid fa-pen"></i><i (click)="deleteUser(item.id)" class="fa-solid fa-circle-minus"></i><i (click)="detailUser(i)" class="fa-solid fa-circle-info"></i></td>
             </tr>
         </tbody>
     </table>
-    <div class="buttons">
-        <a class="agregar" href="">AGREGAR</a>
-        <a class="eliminar" href="">ELIMINAR</a>
-        <a class="editar" href="">EDITAR</a>
+</div>
+
+<!-- MODAL DE NUEVO -->
+<div class="modal-nuevo-container" *ngIf="modalNuevoActive">
+    <p class="modal-salir" (click)="salirModal()"><i class="fa-solid fa-xmark"></i></p>
+    <div class="modal-nuevo-contain">
+        <h1>NUEVO CLIENTE</h1>
+        <form action="" class="form-modal">
+            <input #nombre="ngModel" type="text" placeholder="Nombre" name="nombre" [(ngModel)]="nuevoUsuario.nombre" pattern="^[a-zA-Z]{3,30}(\s[a-zA-Z]{3,30}){0,2}$">
+            <p *ngIf="nombre.invalid">Sin tildes, ni muy corto, por favor.</p>
+            <input #apellidos="ngModel" type="text" placeholder="Apellidos" name="apellidos" [(ngModel)]="nuevoUsuario.apellidos" pattern="^[a-zA-Z]{2,30}(\s[a-zA-Z]{2,22}){0,3}$">
+            <p *ngIf="apellidos.invalid">Sin tildes, ni "ñ - Ñ", por favor.</p>
+            <input #phone="ngModel" type="text" placeholder="Telefono" name="telefono" [(ngModel)]="nuevoUsuario.telefono" pattern="^[0-9]{9,15}$">
+            <p *ngIf="phone.invalid">Ups, debe tener de 9 a 15 N&Uacute;MEROS.</p>
+            <input type="text" placeholder="Direccion" name="direccion" [(ngModel)]="nuevoUsuario.direccion">
+            <select name="documento" id="documento" [(ngModel)]="nuevoUsuario.tipoDocumento.id">
+                <option value="1">DNI</option>
+                <option value="2">Pasaporte de extranjer&iacute;a</option>
+            </select>
+            <input #numDoc="ngModel" type="text" placeholder="Documento" name="documento" [(ngModel)]="nuevoUsuario.documento" pattern="^([0-9]{8}|[0-9]{12})$">
+            <p *ngIf="numDoc.invalid">Uy, debe tener 8 o 12 N&Uacute;MEROS.</p>
+            <input #correo="ngModel" type="text" placeholder="Email" name="email" [(ngModel)]="nuevoUsuario.email" pattern="^[a-zA-Z0-9_\.-]{3,40}@[a-z]{2,20}\.[a-z]{2,10}(\.[a-z]{2,10}){0,2}$">
+            <p *ngIf="correo.invalid">No cumple el formato de correo correcto.</p>
+            <p><input type="checkbox" name="activo" id="activo" [(ngModel)]="nuevoUsuario.estado">Activo</p>
+            <input type="text" placeholder="Usuario" name="usuario" [(ngModel)]="nuevoUsuario.nombreUsuario">
+            <input type="text" placeholder="Contraseña" name="contraseña" [(ngModel)]="nuevoUsuario.password">
+        </form>
+        <button class="modal-enviar" (click)="enviarNuevoUsuario()">Enviar</button>
+    </div>
+</div>
+
+<!-- MODAL DE EDITAR -->
+<div class="modal-nuevo-container" *ngIf="modalEditarActive">
+    <p class="modal-salir" (click)="salirModal()"><i class="fa-solid fa-xmark"></i></p>
+    <div class="modal-nuevo-contain">
+        <h1>EDITAR CLIENTE</h1>
+        <form action="" class="form-modal">
+            <input type="text" placeholder="Nombre" name="nombre" [(ngModel)]="editUsuario.nombre">
+            <input type="text" placeholder="Apellidos" name="apellidos" [(ngModel)]="editUsuario.apellidos">
+            <input type="text" placeholder="Telefono" name="telefono" [(ngModel)]="editUsuario.telefono">
+            <input type="text" placeholder="Direccion" name="direccion" [(ngModel)]="editUsuario.direccion">
+            <select name="documento" id="documento" [(ngModel)]="editUsuario.tipoDocumento.id">
+                <option value="1">DNI</option>
+                <option value="2">Pasaporte de extranjer&iacute;a</option>
+            </select>
+            <input type="text" placeholder="Documento" name="documento" [(ngModel)]="editUsuario.documento">
+            <input type="text" placeholder="Email" name="email" [(ngModel)]="editUsuario.email">
+            <p><input type="checkbox" name="activo" id="activo" [(ngModel)]="editUsuario.estado">Activo</p>
+            <input type="text" placeholder="Usuario" name="usuario" [(ngModel)]="editUsuario.nombreUsuario">
+        </form>
+        <button class="modal-enviar" (click)="editarUsuario()">Enviar</button>
+    </div>
+</div>
+
+<!-- MODAL DE DETALLE -->
+<div class="modal-nuevo-container" *ngIf="modalDetalleActive">
+    <p class="modal-salir" (click)="salirModal()"><i class="fa-solid fa-xmark"></i></p>
+    <div class="modal-nuevo-contain">
+        <h1>DETALLE CLIENTE</h1>
+        <div *ngFor="let item of instalaciones" class="detail-container">
+            <div class="detail-empleado">
+                <h4>Empleado <i class="fa-solid fa-user"></i></h4>
+                <p><b>Nombre:</b> {{item.empleado.nombre}}</p>
+                <p><b>Apellidos:</b> {{item.empleado.apellidos}}</p>
+                <p><b>Tel&eacute;fono:</b> {{item.empleado.telefono}}</p>
+                <p><b>Direccion:</b> {{item.empleado.direccion}}</p>
+                <p><b>Correo:</b> {{item.empleado.correo}}</p>
+                <p><b>C&oacute;digo:</b> {{item.empleado.codigo}}</p>
+            </div>
+            <div class="detail-equipo">
+                <h4>Equipo <i class="fa-solid fa-desktop"></i></h4>
+                <p><b>Marca:</b> {{item.equipo.marca}}</p>
+                <p><b>Modelo:</b> {{item.equipo.modelo}}</p>
+                <p><b>Serie:</b> {{item.serie}}</p>
+            </div>
+            <div class="detail-plan">
+                <h4>Plan <i class="fa-solid fa-wifi"></i></h4>
+                <p><b>Velocidad:</b> {{item.plan.velocidad}}</p>
+                <p><b>Precio:</b> {{item.plan.precio}}</p>
+            </div>
+            <div class="detail-extras">
+                <div class="detail-fecha"><p>Fecha: </p>{{item.fecha}}</div>
+                <div class="detail-direccion"><p>Direcci&oacute;n: </p>{{item.direccion}}</div>
+            </div>
+        </div>
     </div>
 </div>

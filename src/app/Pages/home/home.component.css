@@ -1,4 +1,4 @@
-main{
+  main{
   padding-bottom: 30px;
 }
 /* _carrusel de imágenes */
@@ -8,7 +8,9 @@ main{
   width: 100%;
   display: flex;
 } .main-carrusel-content img, .main-carrusel-content li{
-  width: 100%;
+  height: 600px;
+  width: 100%;  
+  object-fit: cover;
   flex: none;
 } .main-carrusel-content .li-car1{
   position: relative;

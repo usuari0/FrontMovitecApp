@@ -7,6 +7,11 @@ export interface UsuarioLoginReturn{
     token: string,
     bearer: string,
     nombreUsuario: string,
+    nombre: string,
+    apellidos: string,
+    telefono: string,
+    direccion: string,
+    estado: boolean,
     authorities: string[]
 }
 
@@ -38,4 +43,10 @@ export interface UsuarioListDto{
     nombre_Usuario:string,
     telefono:string,
     tipo:string
+}
+
+export interface Contraseñas{
+	nomUsuario:string;
+	passAniguo:string;
+	passNuevo:string;
 }

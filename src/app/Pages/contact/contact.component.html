@@ -9,7 +9,7 @@
                placeholder="Nombre"
                [(ngModel)]="contacto.nombre"
                pattern="^[a-zA-Z]{3,30}(\s[a-zA-Z]{3,30}){0,2}$">
-               <p *ngIf="nombre.invalid">Sin tildes, ni "ñ - Ñ", por favor.</p>
+               <p *ngIf="nombre.invalid">Sin tildes, ni muy corto, por favor.</p>
 <!--\u00f1\u00d1  estos son para ñ y Ñ-->
         <input name="apellidos" #apellidos="ngModel"
                class="form-item"

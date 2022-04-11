@@ -17,11 +17,13 @@ import { AdminComponent } from './Pages/admin/admin.component';
 import { Interceptor1Service, interceptorProvider } from './Interceptors/interceptor1.service';
 import { MenuAdminComponent } from './Components/menu-admin/menu-admin.component';
 import { UsuariosAdminComponent } from './Components/usuarios-admin/usuarios-admin.component';
-import { AdminClientesComponent } from './Pages/admin-clientes/admin-clientes.component';
 import { AdminPlanesComponent } from './Pages/admin-planes/admin-planes.component';
 import { AdminUsuariosComponent } from './Pages/admin-usuarios/admin-usuarios.component';
 import { AdminEmpleadosComponent } from './Pages/admin-empleados/admin-empleados.component';
 import { AdminEquiposComponent } from './Pages/admin-equipos/admin-equipos.component';
+import { AdminCambiaContraComponent } from './Pages/admin-cambia-contra/admin-cambia-contra.component';
+import { MenuClientComponent } from './Components/menu-client/menu-client.component';
+import { ClientInicioComponent } from './Pages/client-inicio/client-inicio.component';
 
 @NgModule({
   declarations: [
@@ -37,11 +39,13 @@ import { AdminEquiposComponent } from './Pages/admin-equipos/admin-equipos.compo
     AdminComponent,
     MenuAdminComponent,
     UsuariosAdminComponent,
-    AdminClientesComponent,
     AdminPlanesComponent,
     AdminUsuariosComponent,
     AdminEmpleadosComponent,
-    AdminEquiposComponent
+    AdminEquiposComponent,
+    AdminCambiaContraComponent,
+    MenuClientComponent,
+    ClientInicioComponent
   ],
   imports: [
     HttpClientModule,

@@ -3,7 +3,7 @@
     <img src="../../../assets/img/logoMovitec2.png" alt="">
     <form action="" (submit)="onLogin()">
       <input type="text" placeholder="Usuario" [(ngModel)]="loginUsuario.nombreUsuario" name="nombreUsuario">
-      <input type="text" placeholder="Contraseña" [(ngModel)]="loginUsuario.password" name="password">
+      <input type="password" placeholder="Contraseña" [(ngModel)]="loginUsuario.password" name="password">
       <!--label for="check"><input type="checkbox" id="check">    ¿Administrador?</label-->
       <p class="login-error" *ngIf="isLoginFail">Usuario y/o contraseña incorrecto/s</p>
       <input type="submit" value="Ingresar">
